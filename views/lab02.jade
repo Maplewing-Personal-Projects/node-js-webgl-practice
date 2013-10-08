@@ -1,0 +1,7 @@
+extend layout
+block content
+	h1 Password
+	form(action="/lab02/check", method="post")
+		label(for="code") Code:
+		input(type="text", name="code")
+		input(type="submit")
