@@ -78,7 +78,7 @@ app.get('/lab04', function (req, res) {
 });
 
 app.get('/WebGL01', function (req, res) {
-  res.render('webGL01',
+  res.render('webgl01',
   { title : 'WebGL01' }
   );
 });
