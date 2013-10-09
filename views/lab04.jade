@@ -2,12 +2,12 @@ extend layout
 block content
   table(border='1')
     tr
-      th i
-      th *
-    - for( var i = 1 ; i <= n ; i++){
+      th Item
+      th Num#
+    - if( n && n.length ) for( var i = 0 ; i < n.length ; i++){
       tr
-        td= i
+        td= 'No.' + (i+1) 
         td(style='text-align: left; padding-left: 20px;')
-          - for( var j = 0 ; j < i ; j++ )
-            *
+          - for( var j = 0 ; j < n[i] ; j++ )
+            span(class='block')
     - }

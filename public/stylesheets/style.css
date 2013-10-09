@@ -143,6 +143,10 @@ header a:hover {
   margin-bottom: 10px;
   font-weight: bold;
 }
+.main-content h1.update {
+  color: #f00;
+  margin-bottom: 20px;
+}
 .main-content a {
   color: #5b4dfa;
   text-decoration: none;
@@ -155,7 +159,7 @@ header a:hover {
 }
 .main-content table {
   margin: auto;
-  width: 200px;
+  min-width: 200px;
 }
 .main-content table tr th,
 .main-content table tr td {
@@ -174,6 +178,12 @@ header a:hover {
 }
 .main-content li {
   margin-top: 10px;
+}
+.main-content .block {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: #777;
 }
 .sidebar {
   float: left;
