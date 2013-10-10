@@ -84,7 +84,7 @@ app.get('/WebGL01', function (req, res) {
 });
 
 app.get('/DS01', function (req, res){
-  res.render('ds01',
+  res.render('DS01',
   { title : 'Data Structor: Homework 1' }
   );
 
