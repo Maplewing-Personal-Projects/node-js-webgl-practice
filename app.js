@@ -83,6 +83,13 @@ app.get('/WebGL01', function (req, res) {
   );
 });
 
+app.get('/DS01', function (req, res){
+  res.render('ds01',
+  { title : 'Data Structor: Homework 1' }
+  );
+
+});
+
 var port = process.env.PORT || 5000;
 app.listen(port, function(){
   console.log("Listening on " + port);

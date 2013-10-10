@@ -185,6 +185,11 @@ header a:hover {
   height: 20px;
   background-color: #777;
 }
+.main-content #stdout,
+.main-content #stderr {
+  background-color: #000;
+  color: #fff;
+}
 .sidebar {
   float: left;
   width: 200px;
