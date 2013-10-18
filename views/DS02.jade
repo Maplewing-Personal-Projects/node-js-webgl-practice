@@ -1,0 +1,14 @@
+extend layout
+block content
+	script(src="script/jquery-1.10.2.min.js")
+	script(src="script/DS/calculator.js")
+	script(src="script/DS/main02.js")
+
+	h1 Calculator
+	h2 需運用一個到多個空白分隔各個符號
+	p example: ( 24 / 2 ) * 3 + ( 3 - 2 )
+	input(type="text", id="calText")
+	button(id="calSubmit") 計算
+
+	h1 #STDOUT:
+	#stdout

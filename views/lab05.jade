@@ -1,0 +1,11 @@
+extend layout
+block content
+  h1 Gallery
+  table
+    - for( var i = 0 ; i < Math.ceil(files.length/2) ; ++i )
+        tr
+            - for( var j = 0 ; j < 2 && i*2 + j < files.length ; ++j )
+                td
+                    img(src=files[i*2+j].substring(6), alt=files[i*2+j].substring(6), width=200)
+            
+

@@ -189,6 +189,7 @@ header a:hover {
 .main-content #stderr {
   background-color: #000;
   color: #fff;
+  padding: 5px;
 }
 .sidebar {
   float: left;

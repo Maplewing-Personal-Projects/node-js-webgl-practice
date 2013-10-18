@@ -1,0 +1,10 @@
+extend layout
+block content
+  h1 Upload
+  form(action="/lab06-upload", method="post", enctype="multipart/form-data")
+    p
+      label(for="fileField") File(Must be .jpg):
+      input(type="file", name="fileField")
+    input(type="submit", value="送出")
+
+            

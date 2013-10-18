@@ -3,7 +3,10 @@
  */
 var express = require('express')
   , stylus = require('stylus')
-  , nib = require('nib');
+  , nib = require('nib')
+  , glob = require('glob')
+  , fs = require('fs')
+  , path = require('path');
 
 var app = express();
 function compile(str, path) {
@@ -13,7 +16,8 @@ function compile(str, path) {
 }
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
-app.use(express.bodyParser());
+app.use(express.limit('4mb'));
+app.use(express.bodyParser({uploadDir:'./upload'}));
 app.use(express.logger('dev'));
 app.use(stylus.middleware(
   { src: __dirname + '/public'
@@ -77,6 +81,42 @@ app.get('/lab04', function (req, res) {
   );
 });
 
+app.get('/lab05', function (req, res){
+  glob("public/image/*.jpg", function(err, files){
+    res.render('lab05',
+    { title : 'Lab05',
+      files : files }
+    );
+  });
+});
+
+app.get('/lab06', function (req, res){
+  res.render('lab06',
+  { title : 'Lab06' }
+  );
+});
+
+app.post('/lab06-upload', function (req, res){
+  var tmpPath = req.files.fileField.path;
+  var targetPath = './public/image/' + req.files.fileField.name;
+  if( path.extname(req.files.fileField.name) === '.jpg' ){
+    fs.rename(tmpPath, targetPath, function(err){
+      if(err) throw err;
+      fs.unlink( tmpPath, function(){
+        if(err) throw err;
+         console.log('File uploaded to: ' + targetPath + ' - ' + req.files.fileField.size + ' bytes');
+      });
+    })
+  }
+  else{
+    fs.unlink( tmpPath, function(){
+      if(err) throw err;
+       console.log('File not uploaded to: ' + targetPath);
+    });
+  }
+  res.redirect('/lab05');
+});
+
 app.get('/WebGL01', function (req, res) {
   res.render('webgl01',
   { title : 'WebGL01' }
@@ -87,8 +127,14 @@ app.get('/DS01', function (req, res){
   res.render('DS01',
   { title : 'Data Structor: Homework 1' }
   );
-
 });
+
+app.get('/DS02', function (req, res){
+  res.render('DS02',
+  { title : 'Data Structor: Homework 2' }
+  );
+});
+
 
 var port = process.env.PORT || 5000;
 app.listen(port, function(){
